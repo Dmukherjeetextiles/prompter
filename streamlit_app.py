@@ -66,7 +66,8 @@ def main():
     # Display the response if available
     if 'show_response' in st.session_state and st.session_state.show_response:
         pathinput = st.success(f"{st.session_state.last_response}")
-        st.code(Pathinput, language="python")
+        Path = f'''{pathinput}'''
+        st.code(Path, language="python")
         
         # Display the dataframe with inputs and responses
         st.dataframe(st.session_state.dataframe)
