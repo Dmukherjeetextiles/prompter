@@ -1,6 +1,34 @@
 import streamlit as st
 import pandas as pd
-from prompter import gemini_chat, save_responses_to_csv
+from prompter import save_responses_to_csv
+
+def gemini_chat(text):
+    api_key = st.secrets["API_KEY"]
+    genai.configure(api_key=api_key)
+
+    model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
+                                  generation_config={
+                                      "temperature": 1,
+                                      "top_p": 0.95,
+                                      "top_k": 0,
+                                      "max_output_tokens": 8192,
+                                  },
+                                  safety_settings=[
+                                      {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                                      {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                                      {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                                      {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
+                                  ])
+    convo = model.start_chat(history=[])
+    
+    try:
+        my_input = f"Provide a prompt for large language models according to the input at {text}. The prompt should be properly outlined according to prompt engineering principles."
+        convo.send_message(my_input)
+        response = convo.last.text.replace('*', '')
+        return response
+    except Exception as e:
+        print(f"It seems that there's an error: {e}")
+        return None
 
 # Function to process the input and get the response
 def process_input(user_input):
