@@ -11,12 +11,6 @@ This Streamlit app allows you to generate prompts for large language models like
 - **Input/Response History:** All your queries and the generated prompts are stored in a dataframe, which can be viewed and downloaded as a CSV file.
 
 
-**Prerequisites:**
-    - Python 3.8 or later
-    - Google Cloud Platform project with an API key for Google Generative AI (Gemini)
-    - Streamlit (install with `pip install streamlit`)
-    - `prompter.py` file (included in this repository)
-
 **Note:**
 
 - This app uses the Gemini-1.5-pro model. You can change the model in the `gemini_chat` function.
