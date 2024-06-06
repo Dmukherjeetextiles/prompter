@@ -65,7 +65,7 @@ def main():
 
     # Display the response if available
     if 'show_response' in st.session_state and st.session_state.show_response:
-        st.success(f"Result: {st.session_state.last_response}")
+        st.success(f"{st.session_state.last_response}")
         
         # Display the dataframe with inputs and responses
         st.dataframe(st.session_state.dataframe)
