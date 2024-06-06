@@ -51,7 +51,7 @@ def main():
         st.session_state.dataframe = pd.DataFrame(columns=['Input', 'Response'])
     
     # Text input for the user prompt
-    user_input = st.text_input("Enter your query and get a prompt to get your job done better:")
+    user_input = st.text_input("Enter your query and get a prompt to get your job done better (for Claude-3-opus, Gemini-1.5-pro, OpenAI GPT-4-omni models):")
 
     # Button to submit the query
     if st.button("Submit"):
