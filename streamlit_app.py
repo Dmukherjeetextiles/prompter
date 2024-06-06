@@ -65,7 +65,7 @@ def main():
 
     # Display the response if available
     if 'show_response' in st.session_state and st.session_state.show_response:
-        pathinput = st.success(f"{st.session_state.last_response}")
+        pathinput = st.markdown(f"{st.session_state.last_response}")
         Path = f'''{pathinput}'''
         st.code(Path, language="python")
         
