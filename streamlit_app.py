@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from prompter import save_responses_to_csv
+import google.generativeai as genai
 
 def gemini_chat(text):
     api_key = st.secrets["API_KEY"]
